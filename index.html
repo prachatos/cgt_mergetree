@@ -1,0 +1,709 @@
+<!DOCTYPE html>  
+<html lang="en"> 
+  <head>
+    <meta charset="utf-8">
+ 
+    <title>Collapsible Tree Example</title>
+ 
+    <style>
+	.node circle {
+	  fill: red;
+	  stroke: red;
+	  stroke-width: 0.5px;
+	}
+	.node text { font: 5px sans-serif; }
+  .node text1 { font: 5px sans-serif; }
+	.link {
+	  fill: none;
+	  stroke: #90EE90;
+	  stroke-width: 1px;
+	}
+      .slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4cad4d; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+	
+      #span1
+      {
+        float:left;
+      }
+      #span2
+      {
+        float:right;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <div>
+      <span id="span1">
+<label for="IIII">Function Value:</label> &nbsp;
+        <label id="IIII" , name="Value", font-size=25px>0
+</label>
+      </span>
+      <span id="span2">
+<label for="III" id="3cap">Edge slider Value:</label> &nbsp;
+
+
+        <label id="III" , name="Value", font-size=25px>0
+</label>
+      </span>
+    </div>
+    
+      <div class="slidecontainer">
+  <input type="range" min="0" max="1000000000" value="0" class="slider" id="myRange">
+</div>
+    
+          <div class="slidecontainer">
+  <input type="range" min="0" max="10e8" value="10e8" class="slider" id="myRange1">
+</div>
+    <button id="btn">Radial</button>
+    
+
+<!-- load the d3.js library -->	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.3.10/d3.min.js"></script>
+	
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var treeData = [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 11764706}, {"py/object": "__main__.Tree", "children": [], "name": 11764706}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 11764706}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 11764706}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 19607843}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 19607843}, {"py/object": "__main__.Tree", "children": [], "name": 15686275}, {"py/object": "__main__.Tree", "children": [], "name": 19607843}, {"py/object": "__main__.Tree", "children": [], "name": 19607843}, {"py/object": "__main__.Tree", "children": [], "name": 27450980}, {"py/object": "__main__.Tree", "children": [], "name": 19607843}, {"py/object": "__main__.Tree", "children": [], "name": 19607843}, {"py/object": "__main__.Tree", "children": [], "name": 23529412}, {"py/object": "__main__.Tree", "children": [], "name": 27450980}, {"py/object": "__main__.Tree", "children": [], "name": 23529412}, {"py/object": "__main__.Tree", "children": [], "name": 23529412}, {"py/object": "__main__.Tree", "children": [], "name": 23529412}, {"py/object": "__main__.Tree", "children": [], "name": 35294119}, {"py/object": "__main__.Tree", "children": [], "name": 27450980}, {"py/object": "__main__.Tree", "children": [], "name": 39215687}, {"py/object": "__main__.Tree", "children": [], "name": 31372550}, {"py/object": "__main__.Tree", "children": [], "name": 31372550}, {"py/object": "__main__.Tree", "children": [], "name": 35294119}, {"py/object": "__main__.Tree", "children": [], "name": 31372550}, {"py/object": "__main__.Tree", "children": [], "name": 43137256}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 50980392}, {"py/object": "__main__.Tree", "children": [], "name": 90196080}, {"py/object": "__main__.Tree", "children": [], "name": 47058824}, {"py/object": "__main__.Tree", "children": [], "name": 47058824}, {"py/object": "__main__.Tree", "children": [], "name": 50980392}, {"py/object": "__main__.Tree", "children": [], "name": 62745101}, {"py/object": "__main__.Tree", "children": [], "name": 58823529}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 70588238}, {"py/object": "__main__.Tree", "children": [], "name": 74509806}, {"py/object": "__main__.Tree", "children": [], "name": 317647069}, {"py/object": "__main__.Tree", "children": [], "name": 74509806}, {"py/object": "__main__.Tree", "children": [], "name": 113725490}, {"py/object": "__main__.Tree", "children": [], "name": 78431375}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 98039217}, {"py/object": "__main__.Tree", "children": [], "name": 94117648}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 113725490}], "name": 98039217}, {"py/object": "__main__.Tree", "children": [], "name": 98039217}, {"py/object": "__main__.Tree", "children": [], "name": 98039217}, {"py/object": "__main__.Tree", "children": [], "name": 101960785}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 125490203}, {"py/object": "__main__.Tree", "children": [], "name": 98039217}, {"py/object": "__main__.Tree", "children": [], "name": 227450981}, {"py/object": "__main__.Tree", "children": [], "name": 117647059}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 152941182}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 431372553}, {"py/object": "__main__.Tree", "children": [], "name": 219607844}, {"py/object": "__main__.Tree", "children": [], "name": 184313729}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 172549024}, {"py/object": "__main__.Tree", "children": [], "name": 176470592}, {"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 176470592}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 223529413}], "name": 180392161}, {"py/object": "__main__.Tree", "children": [], "name": 180392161}, {"py/object": "__main__.Tree", "children": [], "name": 180392161}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 227450981}, {"py/object": "__main__.Tree", "children": [], "name": 200000002}, {"py/object": "__main__.Tree", "children": [], "name": 192156866}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 223529413}, {"py/object": "__main__.Tree", "children": [], "name": 207843139}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 247058823}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}], "name": 215686276}, {"py/object": "__main__.Tree", "children": [], "name": 215686276}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 235294118}], "name": 219607844}, {"py/object": "__main__.Tree", "children": [], "name": 223529413}, {"py/object": "__main__.Tree", "children": [], "name": 223529413}, {"py/object": "__main__.Tree", "children": [], "name": 219607844}, {"py/object": "__main__.Tree", "children": [], "name": 207843139}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 239215686}, {"py/object": "__main__.Tree", "children": [], "name": 227450981}, {"py/object": "__main__.Tree", "children": [], "name": 219607844}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 294117659}], "name": 231372550}, {"py/object": "__main__.Tree", "children": [], "name": 231372550}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [], "name": 247058823}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 278431385}, {"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 298039227}, {"py/object": "__main__.Tree", "children": [], "name": 333333343}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 352941185}], "name": 305882364}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 537254929}], "name": 376470595}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 596078455}], "name": 482352942}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 450980395}, {"py/object": "__main__.Tree", "children": [], "name": 501960813}], "name": 439215689}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 541176497}, {"py/object": "__main__.Tree", "children": [], "name": 717647075}], "name": 521568655}], "name": 403921574}, {"py/object": "__main__.Tree", "children": [], "name": 419607847}, {"py/object": "__main__.Tree", "children": [], "name": 400000005}], "name": 360784322}], "name": 309803932}], "name": 294117659}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 333333343}], "name": 309803932}], "name": 274509817}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 278431385}], "name": 266666680}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 278431385}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 309803932}], "name": 282352954}], "name": 266666680}], "name": 254901975}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 270588248}], "name": 250980406}, {"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 517647087}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 435294121}, {"py/object": "__main__.Tree", "children": [], "name": 435294121}], "name": 388235300}, {"py/object": "__main__.Tree", "children": [], "name": 384313732}], "name": 356862753}, {"py/object": "__main__.Tree", "children": [], "name": 403921574}], "name": 313725501}, {"py/object": "__main__.Tree", "children": [], "name": 337254911}], "name": 278431385}], "name": 239215686}], "name": 223529413}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 243137255}], "name": 231372550}, {"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [], "name": 239215686}, {"py/object": "__main__.Tree", "children": [], "name": 231372550}, {"py/object": "__main__.Tree", "children": [], "name": 231372550}, {"py/object": "__main__.Tree", "children": [], "name": 231372550}, {"py/object": "__main__.Tree", "children": [], "name": 243137255}, {"py/object": "__main__.Tree", "children": [], "name": 290196090}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 239215686}, {"py/object": "__main__.Tree", "children": [], "name": 235294118}, {"py/object": "__main__.Tree", "children": [], "name": 235294118}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 254901975}, {"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [], "name": 250980406}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 298039227}, {"py/object": "__main__.Tree", "children": [], "name": 247058823}, {"py/object": "__main__.Tree", "children": [], "name": 247058823}, {"py/object": "__main__.Tree", "children": [], "name": 243137255}, {"py/object": "__main__.Tree", "children": [], "name": 462745100}, {"py/object": "__main__.Tree", "children": [], "name": 239215686}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 243137255}, {"py/object": "__main__.Tree", "children": [], "name": 254901975}, {"py/object": "__main__.Tree", "children": [], "name": 243137255}, {"py/object": "__main__.Tree", "children": [], "name": 250980406}, {"py/object": "__main__.Tree", "children": [], "name": 239215686}, {"py/object": "__main__.Tree", "children": [], "name": 239215686}, {"py/object": "__main__.Tree", "children": [], "name": 243137255}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 254901975}, {"py/object": "__main__.Tree", "children": [], "name": 250980406}, {"py/object": "__main__.Tree", "children": [], "name": 243137255}, {"py/object": "__main__.Tree", "children": [], "name": 247058823}, {"py/object": "__main__.Tree", "children": [], "name": 247058823}, {"py/object": "__main__.Tree", "children": [], "name": 250980406}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 266666680}], "name": 250980406}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 309803932}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 341176480}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 368627458}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 419607847}], "name": 388235300}], "name": 341176480}], "name": 317647069}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 317647069}, {"py/object": "__main__.Tree", "children": [], "name": 341176480}], "name": 301960796}], "name": 286274522}], "name": 262745112}], "name": 247058823}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 247058823}, {"py/object": "__main__.Tree", "children": [], "name": 254901975}, {"py/object": "__main__.Tree", "children": [], "name": 250980406}, {"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 250980406}, {"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [], "name": 239215686}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 247058823}, {"py/object": "__main__.Tree", "children": [], "name": 278431385}, {"py/object": "__main__.Tree", "children": [], "name": 254901975}, {"py/object": "__main__.Tree", "children": [], "name": 282352954}, {"py/object": "__main__.Tree", "children": [], "name": 250980406}, {"py/object": "__main__.Tree", "children": [], "name": 250980406}, {"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 250980406}, {"py/object": "__main__.Tree", "children": [], "name": 247058823}, {"py/object": "__main__.Tree", "children": [], "name": 254901975}, {"py/object": "__main__.Tree", "children": [], "name": 250980406}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 286274522}], "name": 262745112}], "name": 250980406}, {"py/object": "__main__.Tree", "children": [], "name": 250980406}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 250980406}, {"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 254901975}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 254901975}, {"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 454901963}], "name": 274509817}], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}], "name": 247058823}, {"py/object": "__main__.Tree", "children": [], "name": 254901975}, {"py/object": "__main__.Tree", "children": [], "name": 247058823}, {"py/object": "__main__.Tree", "children": [], "name": 254901975}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}], "name": 250980406}, {"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [], "name": 247058823}, {"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 254901975}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 423529416}, {"py/object": "__main__.Tree", "children": [], "name": 592156887}], "name": 372549027}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 603921592}], "name": 458823531}], "name": 349019616}, {"py/object": "__main__.Tree", "children": [], "name": 356862753}], "name": 313725501}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 282352954}, {"py/object": "__main__.Tree", "children": [], "name": 290196090}], "name": 270588248}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 286274522}], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}], "name": 258823543}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 294117659}, {"py/object": "__main__.Tree", "children": [], "name": 294117659}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 305882364}], "name": 294117659}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 305882364}], "name": 294117659}], "name": 270588248}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 286274522}], "name": 270588248}], "name": 258823543}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 282352954}, {"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 317647069}], "name": 305882364}, {"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 274509817}], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 337254911}, {"py/object": "__main__.Tree", "children": [], "name": 278431385}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 282352954}], "name": 266666680}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 368627458}, {"py/object": "__main__.Tree", "children": [], "name": 384313732}, {"py/object": "__main__.Tree", "children": [], "name": 486274510}], "name": 337254911}, {"py/object": "__main__.Tree", "children": [], "name": 388235300}], "name": 321568638}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 317647069}, {"py/object": "__main__.Tree", "children": [], "name": 301960796}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 337254911}, {"py/object": "__main__.Tree", "children": [], "name": 333333343}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 490196079}], "name": 349019616}], "name": 313725501}, {"py/object": "__main__.Tree", "children": [], "name": 309803932}, {"py/object": "__main__.Tree", "children": [], "name": 317647069}], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 423529416}], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 333333343}, {"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 301960796}], "name": 286274522}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 321568638}, {"py/object": "__main__.Tree", "children": [], "name": 294117659}], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 282352954}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 341176480}, {"py/object": "__main__.Tree", "children": [], "name": 396078437}], "name": 301960796}, {"py/object": "__main__.Tree", "children": [], "name": 368627458}], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 576470613}, {"py/object": "__main__.Tree", "children": [], "name": 572549045}], "name": 552941203}, {"py/object": "__main__.Tree", "children": [], "name": 607843160}], "name": 533333361}, {"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 309803932}, {"py/object": "__main__.Tree", "children": [], "name": 282352954}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 333333343}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 450980395}, {"py/object": "__main__.Tree", "children": [], "name": 454901963}], "name": 360784322}], "name": 294117659}, {"py/object": "__main__.Tree", "children": [], "name": 301960796}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 317647069}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 513725519}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 513725519}, {"py/object": "__main__.Tree", "children": [], "name": 466666668}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 650980412}], "name": 474509805}], "name": 411764711}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 423529416}, {"py/object": "__main__.Tree", "children": [], "name": 470588237}], "name": 411764711}, {"py/object": "__main__.Tree", "children": [], "name": 403921574}], "name": 384313732}, {"py/object": "__main__.Tree", "children": [], "name": 588235318}], "name": 356862753}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 556862771}, {"py/object": "__main__.Tree", "children": [], "name": 619607865}], "name": 505882382}], "name": 345098048}], "name": 305882364}], "name": 266666680}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 470588237}, {"py/object": "__main__.Tree", "children": [], "name": 831372559}], "name": 411764711}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 439215689}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 564705908}, {"py/object": "__main__.Tree", "children": [], "name": 627451002}], "name": 494117647}], "name": 411764711}], "name": 368627458}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 635294139}], "name": 517647087}], "name": 352941185}], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 282352954}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 305882364}, {"py/object": "__main__.Tree", "children": [], "name": 309803932}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 333333343}, {"py/object": "__main__.Tree", "children": [], "name": 337254911}], "name": 313725501}], "name": 298039227}], "name": 278431385}], "name": 254901975}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 329411774}, {"py/object": "__main__.Tree", "children": [], "name": 400000005}], "name": 278431385}, {"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 290196090}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 278431385}, {"py/object": "__main__.Tree", "children": [], "name": 278431385}, {"py/object": "__main__.Tree", "children": [], "name": 278431385}, {"py/object": "__main__.Tree", "children": [], "name": 333333343}, {"py/object": "__main__.Tree", "children": [], "name": 278431385}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 321568638}], "name": 290196090}, {"py/object": "__main__.Tree", "children": [], "name": 321568638}], "name": 274509817}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 341176480}, {"py/object": "__main__.Tree", "children": [], "name": 333333343}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 403921574}], "name": 360784322}, {"py/object": "__main__.Tree", "children": [], "name": 380392163}], "name": 349019616}], "name": 321568638}], "name": 301960796}], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 329411774}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 321568638}, {"py/object": "__main__.Tree", "children": [], "name": 333333343}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 439215689}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 368627458}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 415686279}, {"py/object": "__main__.Tree", "children": [], "name": 486274510}], "name": 388235300}, {"py/object": "__main__.Tree", "children": [], "name": 466666668}], "name": 368627458}, {"py/object": "__main__.Tree", "children": [], "name": 403921574}, {"py/object": "__main__.Tree", "children": [], "name": 658823549}], "name": 356862753}], "name": 345098048}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 454901963}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 682352960}, {"py/object": "__main__.Tree", "children": [], "name": 776470601}], "name": 670588254}], "name": 584313750}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 639215707}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 533333361}, {"py/object": "__main__.Tree", "children": [], "name": 615686297}], "name": 509803950}], "name": 458823531}], "name": 411764711}], "name": 392156869}, {"py/object": "__main__.Tree", "children": [], "name": 447058826}], "name": 372549027}, {"py/object": "__main__.Tree", "children": [], "name": 396078437}], "name": 356862753}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 556862771}, {"py/object": "__main__.Tree", "children": [], "name": 584313750}], "name": 529411792}], "name": 345098048}, {"py/object": "__main__.Tree", "children": [], "name": 450980395}], "name": 317647069}], "name": 294117659}, {"py/object": "__main__.Tree", "children": [], "name": 372549027}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 305882364}], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 278431385}, {"py/object": "__main__.Tree", "children": [], "name": 298039227}, {"py/object": "__main__.Tree", "children": [], "name": 294117659}, {"py/object": "__main__.Tree", "children": [], "name": 321568638}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 309803932}, {"py/object": "__main__.Tree", "children": [], "name": 278431385}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 364705890}, {"py/object": "__main__.Tree", "children": [], "name": 301960796}, {"py/object": "__main__.Tree", "children": [], "name": 309803932}], "name": 282352954}, {"py/object": "__main__.Tree", "children": [], "name": 282352954}, {"py/object": "__main__.Tree", "children": [], "name": 290196090}, {"py/object": "__main__.Tree", "children": [], "name": 290196090}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 313725501}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 388235300}], "name": 309803932}], "name": 294117659}, {"py/object": "__main__.Tree", "children": [], "name": 388235300}, {"py/object": "__main__.Tree", "children": [], "name": 305882364}, {"py/object": "__main__.Tree", "children": [], "name": 313725501}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 325490206}], "name": 298039227}, {"py/object": "__main__.Tree", "children": [], "name": 290196090}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 301960796}], "name": 286274522}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 411764711}], "name": 356862753}, {"py/object": "__main__.Tree", "children": [], "name": 294117659}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 349019616}], "name": 305882364}, {"py/object": "__main__.Tree", "children": [], "name": 290196090}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 309803932}], "name": 294117659}, {"py/object": "__main__.Tree", "children": [], "name": 298039227}, {"py/object": "__main__.Tree", "children": [], "name": 376470595}, {"py/object": "__main__.Tree", "children": [], "name": 325490206}, {"py/object": "__main__.Tree", "children": [], "name": 439215689}, {"py/object": "__main__.Tree", "children": [], "name": 313725501}, {"py/object": "__main__.Tree", "children": [], "name": 294117659}, {"py/object": "__main__.Tree", "children": [], "name": 321568638}, {"py/object": "__main__.Tree", "children": [], "name": 301960796}, {"py/object": "__main__.Tree", "children": [], "name": 294117659}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 349019616}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 333333343}, {"py/object": "__main__.Tree", "children": [], "name": 356862753}, {"py/object": "__main__.Tree", "children": [], "name": 337254911}, {"py/object": "__main__.Tree", "children": [], "name": 325490206}], "name": 313725501}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 360784322}, {"py/object": "__main__.Tree", "children": [], "name": 337254911}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 443137258}, {"py/object": "__main__.Tree", "children": [], "name": 419607847}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 462745100}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 603921592}], "name": 443137258}], "name": 423529416}], "name": 380392163}], "name": 333333343}], "name": 317647069}], "name": 301960796}, {"py/object": "__main__.Tree", "children": [], "name": 317647069}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 321568638}, {"py/object": "__main__.Tree", "children": [], "name": 317647069}, {"py/object": "__main__.Tree", "children": [], "name": 313725501}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 403921574}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 572549045}, {"py/object": "__main__.Tree", "children": [], "name": 623529434}], "name": 541176497}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 623529434}, {"py/object": "__main__.Tree", "children": [], "name": 658823549}], "name": 607843160}, {"py/object": "__main__.Tree", "children": [], "name": 639215707}], "name": 592156887}], "name": 490196079}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 627451002}, {"py/object": "__main__.Tree", "children": [], "name": 607843160}, {"py/object": "__main__.Tree", "children": [], "name": 603921592}, {"py/object": "__main__.Tree", "children": [], "name": 623529434}], "name": 556862771}, {"py/object": "__main__.Tree", "children": [], "name": 592156887}], "name": 521568655}], "name": 474509805}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 611764729}, {"py/object": "__main__.Tree", "children": [], "name": 592156887}], "name": 533333361}], "name": 454901963}], "name": 415686279}, {"py/object": "__main__.Tree", "children": [], "name": 407843142}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 466666668}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 564705908}, {"py/object": "__main__.Tree", "children": [], "name": 513725519}, {"py/object": "__main__.Tree", "children": [], "name": 611764729}], "name": 501960813}, {"py/object": "__main__.Tree", "children": [], "name": 537254929}], "name": 474509805}], "name": 454901963}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 517647087}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 635294139}], "name": 560784339}], "name": 517647087}], "name": 505882382}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 584313750}, {"py/object": "__main__.Tree", "children": [], "name": 596078455}], "name": 572549045}], "name": 533333361}], "name": 458823531}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 596078455}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 580392181}, {"py/object": "__main__.Tree", "children": [], "name": 631372570}], "name": 568627476}, {"py/object": "__main__.Tree", "children": [], "name": 556862771}, {"py/object": "__main__.Tree", "children": [], "name": 580392181}], "name": 490196079}], "name": 443137258}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 552941203}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 592156887}, {"py/object": "__main__.Tree", "children": [], "name": 635294139}], "name": 568627476}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 654901981}, {"py/object": "__main__.Tree", "children": [], "name": 647058844}], "name": 603921592}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 619607865}], "name": 607843160}], "name": 576470613}], "name": 545098066}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 596078455}, {"py/object": "__main__.Tree", "children": [], "name": 631372570}, {"py/object": "__main__.Tree", "children": [], "name": 564705908}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 584313750}], "name": 560784339}], "name": 549019634}, {"py/object": "__main__.Tree", "children": [], "name": 560784339}], "name": 509803950}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 568627476}, {"py/object": "__main__.Tree", "children": [], "name": 592156887}], "name": 509803950}], "name": 490196079}, {"py/object": "__main__.Tree", "children": [], "name": 462745100}, {"py/object": "__main__.Tree", "children": [], "name": 486274510}], "name": 447058826}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 529411792}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 517647087}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 647058844}], "name": 564705908}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 698039233}], "name": 662745118}, {"py/object": "__main__.Tree", "children": [], "name": 733333349}], "name": 650980412}, {"py/object": "__main__.Tree", "children": [], "name": 635294139}], "name": 549019634}, {"py/object": "__main__.Tree", "children": [], "name": 576470613}], "name": 513725519}], "name": 501960813}], "name": 486274510}, {"py/object": "__main__.Tree", "children": [], "name": 549019634}], "name": 466666668}], "name": 423529416}], "name": 396078437}], "name": 380392163}], "name": 364705890}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 450980395}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 607843160}, {"py/object": "__main__.Tree", "children": [], "name": 560784339}], "name": 549019634}, {"py/object": "__main__.Tree", "children": [], "name": 576470613}], "name": 505882382}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 564705908}, {"py/object": "__main__.Tree", "children": [], "name": 592156887}], "name": 552941203}], "name": 494117647}], "name": 415686279}], "name": 337254911}, {"py/object": "__main__.Tree", "children": [], "name": 384313732}], "name": 325490206}], "name": 294117659}, {"py/object": "__main__.Tree", "children": [], "name": 317647069}, {"py/object": "__main__.Tree", "children": [], "name": 317647069}, {"py/object": "__main__.Tree", "children": [], "name": 298039227}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 305882364}, {"py/object": "__main__.Tree", "children": [], "name": 305882364}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 313725501}, {"py/object": "__main__.Tree", "children": [], "name": 313725501}], "name": 301960796}, {"py/object": "__main__.Tree", "children": [], "name": 305882364}, {"py/object": "__main__.Tree", "children": [], "name": 317647069}, {"py/object": "__main__.Tree", "children": [], "name": 317647069}, {"py/object": "__main__.Tree", "children": [], "name": 313725501}, {"py/object": "__main__.Tree", "children": [], "name": 321568638}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 352941185}, {"py/object": "__main__.Tree", "children": [], "name": 376470595}], "name": 333333343}, {"py/object": "__main__.Tree", "children": [], "name": 345098048}, {"py/object": "__main__.Tree", "children": [], "name": 309803932}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 321568638}, {"py/object": "__main__.Tree", "children": [], "name": 329411774}], "name": 309803932}, {"py/object": "__main__.Tree", "children": [], "name": 349019616}, {"py/object": "__main__.Tree", "children": [], "name": 313725501}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 345098048}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 356862753}, {"py/object": "__main__.Tree", "children": [], "name": 360784322}], "name": 345098048}], "name": 329411774}, {"py/object": "__main__.Tree", "children": [], "name": 325490206}, {"py/object": "__main__.Tree", "children": [], "name": 325490206}, {"py/object": "__main__.Tree", "children": [], "name": 368627458}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 345098048}, {"py/object": "__main__.Tree", "children": [], "name": 372549027}], "name": 325490206}, {"py/object": "__main__.Tree", "children": [], "name": 333333343}, {"py/object": "__main__.Tree", "children": [], "name": 337254911}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 349019616}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 556862771}], "name": 364705890}, {"py/object": "__main__.Tree", "children": [], "name": 376470595}, {"py/object": "__main__.Tree", "children": [], "name": 376470595}], "name": 352941185}], "name": 329411774}, {"py/object": "__main__.Tree", "children": [], "name": 337254911}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 419607847}], "name": 392156869}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 525490224}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 545098066}, {"py/object": "__main__.Tree", "children": [], "name": 572549045}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 745098054}, {"py/object": "__main__.Tree", "children": [], "name": 784313738}], "name": 682352960}], "name": 509803950}], "name": 458823531}], "name": 360784322}, {"py/object": "__main__.Tree", "children": [], "name": 337254911}, {"py/object": "__main__.Tree", "children": [], "name": 333333343}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 376470595}], "name": 352941185}], "name": 341176480}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 498039215}, {"py/object": "__main__.Tree", "children": [], "name": 498039215}], "name": 345098048}, {"py/object": "__main__.Tree", "children": [], "name": 349019616}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 376470595}], "name": 345098048}, {"py/object": "__main__.Tree", "children": [], "name": 345098048}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 415686279}], "name": 380392163}, {"py/object": "__main__.Tree", "children": [], "name": 396078437}], "name": 364705890}], "name": 349019616}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 360784322}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 400000005}], "name": 376470595}, {"py/object": "__main__.Tree", "children": [], "name": 392156869}, {"py/object": "__main__.Tree", "children": [], "name": 400000005}], "name": 364705890}, {"py/object": "__main__.Tree", "children": [], "name": 372549027}], "name": 345098048}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 392156869}, {"py/object": "__main__.Tree", "children": [], "name": 423529416}], "name": 364705890}, {"py/object": "__main__.Tree", "children": [], "name": 419607847}], "name": 349019616}, {"py/object": "__main__.Tree", "children": [], "name": 380392163}, {"py/object": "__main__.Tree", "children": [], "name": 360784322}, {"py/object": "__main__.Tree", "children": [], "name": 352941185}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 443137258}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 513725519}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 525490224}, {"py/object": "__main__.Tree", "children": [], "name": 639215707}], "name": 490196079}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 670588254}, {"py/object": "__main__.Tree", "children": [], "name": 741176486}], "name": 647058844}], "name": 474509805}], "name": 396078437}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 392156869}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 564705908}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 678431391}, {"py/object": "__main__.Tree", "children": [], "name": 678431391}], "name": 603921592}], "name": 509803950}, {"py/object": "__main__.Tree", "children": [], "name": 490196079}, {"py/object": "__main__.Tree", "children": [], "name": 486274510}], "name": 458823531}, {"py/object": "__main__.Tree", "children": [], "name": 521568655}, {"py/object": "__main__.Tree", "children": [], "name": 619607865}], "name": 443137258}], "name": 423529416}], "name": 368627458}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 388235300}], "name": 368627458}, {"py/object": "__main__.Tree", "children": [], "name": 368627458}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 392156869}, {"py/object": "__main__.Tree", "children": [], "name": 392156869}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 427450984}, {"py/object": "__main__.Tree", "children": [], "name": 427450984}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 458823531}], "name": 423529416}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 474509805}, {"py/object": "__main__.Tree", "children": [], "name": 474509805}], "name": 435294121}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 537254929}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 560784339}, {"py/object": "__main__.Tree", "children": [], "name": 600000023}], "name": 537254929}], "name": 521568655}, {"py/object": "__main__.Tree", "children": [], "name": 549019634}, {"py/object": "__main__.Tree", "children": [], "name": 572549045}], "name": 501960813}], "name": 470588237}], "name": 450980395}], "name": 423529416}, {"py/object": "__main__.Tree", "children": [], "name": 509803950}], "name": 403921574}], "name": 380392163}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 388235300}, {"py/object": "__main__.Tree", "children": [], "name": 529411792}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 576470613}, {"py/object": "__main__.Tree", "children": [], "name": 588235318}], "name": 427450984}], "name": 411764711}, {"py/object": "__main__.Tree", "children": [], "name": 403921574}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 454901963}, {"py/object": "__main__.Tree", "children": [], "name": 447058826}], "name": 403921574}], "name": 376470595}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 537254929}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 415686279}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 474509805}, {"py/object": "__main__.Tree", "children": [], "name": 490196079}], "name": 462745100}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 501960813}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 615686297}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 650980412}, {"py/object": "__main__.Tree", "children": [], "name": 631372570}], "name": 580392181}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 713725507}, {"py/object": "__main__.Tree", "children": [], "name": 705882370}], "name": 686274528}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 694117665}, {"py/object": "__main__.Tree", "children": [], "name": 756862759}], "name": 678431391}, {"py/object": "__main__.Tree", "children": [], "name": 717647075}], "name": 654901981}], "name": 568627476}, {"py/object": "__main__.Tree", "children": [], "name": 545098066}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 654901981}, {"py/object": "__main__.Tree", "children": [], "name": 627451002}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 654901981}, {"py/object": "__main__.Tree", "children": [], "name": 701960802}], "name": 635294139}], "name": 615686297}, {"py/object": "__main__.Tree", "children": [], "name": 694117665}], "name": 576470613}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 670588254}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 678431391}, {"py/object": "__main__.Tree", "children": [], "name": 713725507}], "name": 658823549}], "name": 643137276}], "name": 596078455}], "name": 560784339}], "name": 521568655}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 698039233}, {"py/object": "__main__.Tree", "children": [], "name": 549019634}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 596078455}], "name": 584313750}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 674509823}, {"py/object": "__main__.Tree", "children": [], "name": 600000023}, {"py/object": "__main__.Tree", "children": [], "name": 639215707}, {"py/object": "__main__.Tree", "children": [], "name": 631372570}], "name": 584313750}], "name": 568627476}, {"py/object": "__main__.Tree", "children": [], "name": 611764729}], "name": 552941203}], "name": 537254929}], "name": 490196079}], "name": 478431373}], "name": 439215689}], "name": 392156869}], "name": 380392163}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 439215689}, {"py/object": "__main__.Tree", "children": [], "name": 431372553}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 474509805}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 517647087}, {"py/object": "__main__.Tree", "children": [], "name": 494117647}], "name": 478431373}, {"py/object": "__main__.Tree", "children": [], "name": 505882382}], "name": 462745100}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 623529434}], "name": 564705908}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 588235318}, {"py/object": "__main__.Tree", "children": [], "name": 607843160}], "name": 568627476}], "name": 552941203}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 643137276}, {"py/object": "__main__.Tree", "children": [], "name": 678431391}], "name": 603921592}, {"py/object": "__main__.Tree", "children": [], "name": 631372570}], "name": 588235318}], "name": 537254929}, {"py/object": "__main__.Tree", "children": [], "name": 549019634}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 529411792}], "name": 517647087}], "name": 501960813}], "name": 450980395}], "name": 415686279}], "name": 352941185}, {"py/object": "__main__.Tree", "children": [], "name": 388235300}, {"py/object": "__main__.Tree", "children": [], "name": 403921574}, {"py/object": "__main__.Tree", "children": [], "name": 364705890}, {"py/object": "__main__.Tree", "children": [], "name": 356862753}, {"py/object": "__main__.Tree", "children": [], "name": 364705890}, {"py/object": "__main__.Tree", "children": [], "name": 372549027}, {"py/object": "__main__.Tree", "children": [], "name": 392156869}, {"py/object": "__main__.Tree", "children": [], "name": 360784322}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 380392163}, {"py/object": "__main__.Tree", "children": [], "name": 384313732}], "name": 368627458}, {"py/object": "__main__.Tree", "children": [], "name": 360784322}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 368627458}, {"py/object": "__main__.Tree", "children": [], "name": 368627458}, {"py/object": "__main__.Tree", "children": [], "name": 384313732}, {"py/object": "__main__.Tree", "children": [], "name": 368627458}, {"py/object": "__main__.Tree", "children": [], "name": 364705890}, {"py/object": "__main__.Tree", "children": [], "name": 376470595}, {"py/object": "__main__.Tree", "children": [], "name": 400000005}, {"py/object": "__main__.Tree", "children": [], "name": 376470595}, {"py/object": "__main__.Tree", "children": [], "name": 384313732}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 435294121}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 411764711}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 447058826}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 454901963}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 474509805}, {"py/object": "__main__.Tree", "children": [], "name": 482352942}, {"py/object": "__main__.Tree", "children": [], "name": 470588237}, {"py/object": "__main__.Tree", "children": [], "name": 494117647}], "name": 450980395}], "name": 435294121}, {"py/object": "__main__.Tree", "children": [], "name": 450980395}], "name": 423529416}], "name": 396078437}], "name": 384313732}, {"py/object": "__main__.Tree", "children": [], "name": 396078437}, {"py/object": "__main__.Tree", "children": [], "name": 400000005}, {"py/object": "__main__.Tree", "children": [], "name": 388235300}, {"py/object": "__main__.Tree", "children": [], "name": 400000005}], "name": 372549027}], "name": 352941185}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 392156869}, {"py/object": "__main__.Tree", "children": [], "name": 447058826}], "name": 360784322}], "name": 329411774}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 380392163}, {"py/object": "__main__.Tree", "children": [], "name": 352941185}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 443137258}, {"py/object": "__main__.Tree", "children": [], "name": 619607865}], "name": 396078437}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 380392163}], "name": 356862753}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 482352942}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 419607847}, {"py/object": "__main__.Tree", "children": [], "name": 462745100}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 533333361}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 741176486}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 792156875}, {"py/object": "__main__.Tree", "children": [], "name": 843137264}], "name": 768627464}], "name": 709803938}, {"py/object": "__main__.Tree", "children": [], "name": 647058844}, {"py/object": "__main__.Tree", "children": [], "name": 678431391}], "name": 635294139}, {"py/object": "__main__.Tree", "children": [], "name": 596078455}, {"py/object": "__main__.Tree", "children": [], "name": 584313750}], "name": 572549045}, {"py/object": "__main__.Tree", "children": [], "name": 572549045}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 658823549}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 627451002}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 670588254}, {"py/object": "__main__.Tree", "children": [], "name": 709803938}], "name": 627451002}], "name": 592156887}], "name": 580392181}], "name": 556862771}, {"py/object": "__main__.Tree", "children": [], "name": 584313750}], "name": 541176497}], "name": 505882382}], "name": 407843142}, {"py/object": "__main__.Tree", "children": [], "name": 458823531}], "name": 388235300}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 600000023}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 784313738}, {"py/object": "__main__.Tree", "children": [], "name": 827450990}], "name": 666666686}], "name": 521568655}, {"py/object": "__main__.Tree", "children": [], "name": 392156869}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 505882382}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 427450984}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 435294121}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 509803950}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 654901981}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 572549045}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 690196096}], "name": 647058844}], "name": 592156887}], "name": 541176497}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 733333349}, {"py/object": "__main__.Tree", "children": [], "name": 713725507}], "name": 686274528}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 768627464}, {"py/object": "__main__.Tree", "children": [], "name": 768627464}], "name": 752941191}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 741176486}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 756862759}], "name": 741176486}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 764705896}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 792156875}, {"py/object": "__main__.Tree", "children": [], "name": 807843148}, {"py/object": "__main__.Tree", "children": [], "name": 815686285}], "name": 768627464}], "name": 745098054}, {"py/object": "__main__.Tree", "children": [], "name": 749019622}], "name": 729411780}], "name": 709803938}], "name": 666666686}, {"py/object": "__main__.Tree", "children": [], "name": 709803938}], "name": 639215707}, {"py/object": "__main__.Tree", "children": [], "name": 686274528}], "name": 619607865}, {"py/object": "__main__.Tree", "children": [], "name": 564705908}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 654901981}], "name": 643137276}, {"py/object": "__main__.Tree", "children": [], "name": 654901981}], "name": 603921592}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 729411780}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 729411780}, {"py/object": "__main__.Tree", "children": [], "name": 772549033}], "name": 705882370}, {"py/object": "__main__.Tree", "children": [], "name": 709803938}], "name": 639215707}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 674509823}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 741176486}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 749019622}, {"py/object": "__main__.Tree", "children": [], "name": 737254917}, {"py/object": "__main__.Tree", "children": [], "name": 764705896}], "name": 721568644}, {"py/object": "__main__.Tree", "children": [], "name": 725490212}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 752941191}, {"py/object": "__main__.Tree", "children": [], "name": 745098054}], "name": 721568644}], "name": 701960802}], "name": 678431391}], "name": 635294139}], "name": 584313750}, {"py/object": "__main__.Tree", "children": [], "name": 600000023}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 611764729}, {"py/object": "__main__.Tree", "children": [], "name": 619607865}], "name": 588235318}, {"py/object": "__main__.Tree", "children": [], "name": 701960802}], "name": 572549045}], "name": 521568655}, {"py/object": "__main__.Tree", "children": [], "name": 584313750}], "name": 509803950}], "name": 435294121}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 545098066}, {"py/object": "__main__.Tree", "children": [], "name": 494117647}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 541176497}], "name": 517647087}], "name": 462745100}], "name": 423529416}], "name": 396078437}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 505882382}, {"py/object": "__main__.Tree", "children": [], "name": 458823531}, {"py/object": "__main__.Tree", "children": [], "name": 462745100}], "name": 423529416}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 443137258}, {"py/object": "__main__.Tree", "children": [], "name": 443137258}], "name": 431372553}, {"py/object": "__main__.Tree", "children": [], "name": 513725519}], "name": 400000005}], "name": 380392163}, {"py/object": "__main__.Tree", "children": [], "name": 435294121}], "name": 356862753}], "name": 345098048}], "name": 333333343}, {"py/object": "__main__.Tree", "children": [], "name": 364705890}], "name": 309803932}], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 301960796}, {"py/object": "__main__.Tree", "children": [], "name": 321568638}], "name": 266666680}], "name": 254901975}, {"py/object": "__main__.Tree", "children": [], "name": 301960796}, {"py/object": "__main__.Tree", "children": [], "name": 294117659}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 309803932}, {"py/object": "__main__.Tree", "children": [], "name": 309803932}, {"py/object": "__main__.Tree", "children": [], "name": 321568638}, {"py/object": "__main__.Tree", "children": [], "name": 317647069}], "name": 290196090}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 411764711}], "name": 400000005}, {"py/object": "__main__.Tree", "children": [], "name": 341176480}, {"py/object": "__main__.Tree", "children": [], "name": 419607847}], "name": 329411774}], "name": 274509817}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 270588248}], "name": 258823543}, {"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 278431385}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 364705890}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 431372553}, {"py/object": "__main__.Tree", "children": [], "name": 470588237}], "name": 364705890}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 447058826}], "name": 388235300}], "name": 352941185}], "name": 309803932}, {"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [], "name": 282352954}, {"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 278431385}], "name": 254901975}, {"py/object": "__main__.Tree", "children": [], "name": 301960796}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 274509817}], "name": 258823543}, {"py/object": "__main__.Tree", "children": [], "name": 254901975}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 258823543}, {"py/object": "__main__.Tree", "children": [], "name": 254901975}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}, {"py/object": "__main__.Tree", "children": [], "name": 309803932}, {"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [], "name": 266666680}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 282352954}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 278431385}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 278431385}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 282352954}, {"py/object": "__main__.Tree", "children": [], "name": 282352954}, {"py/object": "__main__.Tree", "children": [], "name": 286274522}], "name": 266666680}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 294117659}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 282352954}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 278431385}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 278431385}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 290196090}, {"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 286274522}, {"py/object": "__main__.Tree", "children": [], "name": 290196090}], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 274509817}, {"py/object": "__main__.Tree", "children": [], "name": 270588248}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 298039227}], "name": 274509817}], "name": 254901975}, {"py/object": "__main__.Tree", "children": [], "name": 262745112}], "name": 235294118}], "name": 223529413}, {"py/object": "__main__.Tree", "children": [], "name": 231372550}], "name": 207843139}], "name": 192156866}], "name": 180392161}], "name": 156862750}, {"py/object": "__main__.Tree", "children": [], "name": 247058823}], "name": 141176477}], "name": 121568627}, {"py/object": "__main__.Tree", "children": [], "name": 125490203}, {"py/object": "__main__.Tree", "children": [], "name": 141176477}], "name": 105882354}, {"py/object": "__main__.Tree", "children": [], "name": 172549024}], "name": 86274512}, {"py/object": "__main__.Tree", "children": [{"py/object": "__main__.Tree", "children": [], "name": 121568627}], "name": 94117648}], "name": 74509806}], "name": 50980392}, {"py/object": "__main__.Tree", "children": [], "name": 66666670}], "name": 31372550}, {"py/object": "__main__.Tree", "children": [], "name": 39215687}, {"py/object": "__main__.Tree", "children": [], "name": 54901961}], "name": 0}
+]
+// ************** Generate the tree diagram	 *****************
+  var margin = {top: 0, right: 0, bottom: 0, left: 0}
+  var width = document.documentElement.clientWidth;
+  var height = document.documentElement.clientHeight*0.8;
+  var radial = false;
+var i = 0; 
+var whichslider = 0;
+var tree = d3.layout.tree()
+	.size([height, width])
+   // .nodeSize([10, 10])
+  .separation(function(a, b) { return (a.parent == b.parent ? 2 : 1); })
+  //.sort(d3.ascending);
+var diagonal = d3.svg.diagonal()
+	.projection(function(d) {return [d.y, d.x]; });
+var svg = d3.select("body").append("svg")
+	.attr("width", width + margin.right + margin.left)
+	.attr("height", height + margin.top + margin.bottom)
+  .append("g")
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+root = treeData[0];
+  var treeData1 = treeData;
+  var treeData2 = treeData;
+  var nodes1 = tree.nodes(root).reverse();
+  var nodes2 = tree.nodes(root);
+  update(root)
+ //root.children.forEach(collapse);
+    var slider = document.getElementById("myRange");
+  slider.oninput = function() {
+    slideMain();
+    whichslider = 0
+  };
+  slider.onclick = function() {
+    slideMain();
+    whichslider = 0
+  };
+      var slider1 = document.getElementById("myRange1");
+  slider1.oninput = function() {
+    slideMain1();
+    whichslider = 1
+  };
+   slider1.onclick = function() {
+    slideMain1();
+    whichslider = 1
+  };
+  
+  
+
+function slideMain() {
+    document.getElementById("3cap").innerHTML = "Edge slider value:"
+    document.getElementById("III").innerHTML = slider.value;
+    
+    function deepClone(obj) {
+      var visitedNodes = [];
+      var clonedCopy = [];
+      function clone(item) {
+          if (typeof item === "object" && !Array.isArray(item)) {
+              if (visitedNodes.indexOf(item) === -1) 
+              {
+                  visitedNodes.push(item);
+                  var cloneObject = {};
+                  clonedCopy.push(cloneObject);
+                  for (var i in item) {
+                      if (item.hasOwnProperty(i)) {
+                          cloneObject[i] = clone(item[i]);
+                      }
+                  }
+                  return cloneObject;
+              } 
+            else 
+                  return clonedCopy[visitedNodes.indexOf(item)];
+          }
+          else if (typeof item === "object" && Array.isArray(item)) 
+          {
+              if (visitedNodes.indexOf(item) === -1) {
+                  var cloneArray = [];
+                  visitedNodes.push(item);
+                  clonedCopy.push(cloneArray);
+                  for (var j = 0; j < item.length; j++)
+                      cloneArray.push(clone(item[j]));
+                  return cloneArray;
+              } 
+             else return clonedCopy[visitedNodes.indexOf(item)];
+          }
+
+          return item; 
+        }
+        return clone(obj);
+      }
+
+  
+    par = slider.value;
+    console.log('PAR 1',par)
+    treeData1 = deepClone(treeData);
+    d3.select('svg').remove();
+    var root1 = treeData1[0];
+    var nodes1 = tree.nodes(root1).reverse();
+    nodes1.forEach(function(d) { 
+      for(var i in d.children){
+          if(d.children && d.children[i].name - d.name <par) {
+              collapse(d.children[i]);
+            }
+       }
+
+    	});
+ 
+  		update(root1);
+  
+  
+  function collapse(d) {
+    if(d.children) {
+      d._children = d.children
+      d.children = null
+      if(d.parent.children)
+      	d.parent.children = d.parent.children.concat(d._children); 
+    }
+	}
+ }
+      
+  function slideMain1() {
+  //console.log('here');
+    
+    document.getElementById("3cap").innerHTML = "Vertex slider value:"
+    document.getElementById("III").innerHTML = slider1.value;
+    
+    function deepClone(obj) {
+      var visitedNodes = [];
+      var clonedCopy = [];
+      function clone(item) {
+          if (typeof item === "object" && !Array.isArray(item)) {
+              if (visitedNodes.indexOf(item) === -1) 
+              {
+                  visitedNodes.push(item);
+                  var cloneObject = {};
+                  clonedCopy.push(cloneObject);
+                  for (var i in item) {
+                      if (item.hasOwnProperty(i)) {
+                          cloneObject[i] = clone(item[i]);
+                      }
+                  }
+                  return cloneObject;
+              } 
+            else 
+                  return clonedCopy[visitedNodes.indexOf(item)];
+          }
+          else if (typeof item === "object" && Array.isArray(item)) 
+          {
+              if (visitedNodes.indexOf(item) === -1) {
+                  var cloneArray = [];
+                  visitedNodes.push(item);
+                  clonedCopy.push(cloneArray);
+                  for (var j = 0; j < item.length; j++)
+                      cloneArray.push(clone(item[j]));
+                  return cloneArray;
+              } 
+             else return clonedCopy[visitedNodes.indexOf(item)];
+          }
+
+          return item; 
+        }
+        return clone(obj);
+      }
+
+  
+    par = slider1.value;
+    console.log('PAR 1',par)
+    treeData2 = deepClone(treeData);
+    d3.select('svg').remove();
+    var root2 = treeData2[0];
+    var nodes2 = tree.nodes(root2);
+    nodes2.forEach(function(d) { 
+      for(var i in d.children){
+         if(d.name > slider1.value)
+          d.children = null;
+       }
+
+    	});
+ 
+  		update(root2);
+  
+  
+  function collapse(d) {
+    if(d.children) {
+      d._children = d.children
+      d.children = null
+      if(d.parent.children)
+      	d.parent.children = d.parent.children.concat(d._children); 
+    }
+	}
+ }
+
+//update(root);
+function update(source) {
+  
+  console.log('In UPDATE')
+  // Compute the new tree layout.
+  var nodes = tree.nodes(source),//.reverse(),
+  //var nodes1 = tree.nodes(root).reverse();
+	  links = tree.links(nodes);
+  var min = 0;
+  var max = document.documentElement.clientWidth*0.9;
+  var distance = d3.scale.linear()
+                 .domain([0,10e8])
+                 .range([min, max]);//window.screen.width*2]);
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) 
+  {
+    d.y = distance(parseInt(d.name))+parseInt(Math.random());
+  }
+               );
+
+  
+  // Declare the nodes…
+   d3.select('svg').remove();
+  svg = d3.select("body").append("svg")
+	.attr("width", width + margin.right + margin.left)
+	.attr("height", height + margin.top + margin.bottom)
+  .append("g")
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  var node = svg.selectAll("g.node")
+	  .data(nodes, function(d) {return d.id || (d.id = ++i); });
+  
+  // Enter the nodes.
+  var nodeEnter = node.enter().append("g")
+	  .attr("class", "node")
+	  .attr("transform", function(d) { 
+		  return "translate(" + d.y + "," + d.x + ")"; })
+    .on("mouseover", mo);
+  nodeEnter.append("circle")
+	  .attr("r", 1)
+	  .style("fill", "#ccc");
+     
+  var line = d3.svg.line()
+             .x(function(d){
+               return d.y;
+             })
+             .y(function(d){
+               return d.x;
+             })
+  // Declare the links…
+  var link = svg.selectAll("path.link")
+	  .data(links, function(d) { return d.target.id; });
+  // Enter the links.
+  link.enter().insert("svg:path", "g")
+	  .attr("class", "link")
+	  .attr("d", diagonal);
+    //  .attr("d", function(d){
+    //return line([d.source, d.target]);
+  //})
+}
+  function click(d) {
+    if (d.children) {
+        d._children = d.children;
+        d.children = null;
+      } else {
+        d.children = d._children;
+        d._children = null;
+      }
+    update(d);
+  }
+  
+    function mo(d) {
+      document.getElementById("IIII").innerHTML = d.name;
+  }
+   function showRadial() {
+      var diameter = Math.min(document.documentElement.clientWidth, 	document.documentElement.clientHeight)*0.8;
+     console.log(diameter);
+
+      var width = document.documentElement.clientWidth,
+          height = document.documentElement.clientHeight;
+     console.log(width, height, "sr")
+
+      var i = 0, duration = 350;
+      var tree2 = d3.layout.tree()
+          .size([360, diameter / 2 ])
+          .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
+
+      var diagonal = d3.svg.diagonal.radial()
+          .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
+
+      var root = treeData[0];
+      root.x0 = height / 2;
+      root.y0 = 0;
+			
+     
+function slideRadial() {
+    document.getElementById("3cap").innerHTML = "Edge slider value:"
+    document.getElementById("III").innerHTML = slider.value;
+    
+    function deepClone(obj) {
+    var visitedNodes = [];
+    var clonedCopy = [];
+    function clone(item) {
+        if (typeof item === "object" && !Array.isArray(item)) {
+            if (visitedNodes.indexOf(item) === -1) 
+            {
+                visitedNodes.push(item);
+                var cloneObject = {};
+                clonedCopy.push(cloneObject);
+                for (var i in item) {
+                    if (item.hasOwnProperty(i)) {
+                        cloneObject[i] = clone(item[i]);
+                    }
+                }
+                return cloneObject;
+            } 
+          else 
+                return clonedCopy[visitedNodes.indexOf(item)];
+        }
+        else if (typeof item === "object" && Array.isArray(item)) 
+        {
+            if (visitedNodes.indexOf(item) === -1) {
+                var cloneArray = [];
+                visitedNodes.push(item);
+                clonedCopy.push(cloneArray);
+                for (var j = 0; j < item.length; j++)
+                    cloneArray.push(clone(item[j]));
+                return cloneArray;
+            } 
+           else return clonedCopy[visitedNodes.indexOf(item)];
+        }
+
+        return item; 
+    	}
+    	return clone(obj);
+		}
+
+  
+    par = slider.value;
+    var treeData1 = deepClone(treeData);
+    d3.select('svg').remove();
+    var root1 = treeData1[0];
+  
+    var nodes1 = tree.nodes(root1);
+    nodes1.forEach(function(d) { 
+      for(var i in d.children){
+          if(d.children && d.children[i].name - d.name <par) {
+              collapse(d.children[i]);
+            }
+       }
+
+    	});
+ 
+  		updateR(root1, tree2);
+   }
+  
+  
+  function collapse(d) {
+    if(d.children) {
+      d._children = d.children
+      d.children = null
+      if(d.parent.children)
+      	d.parent.children = d.parent.children.concat(d._children); 
+    }
+}
+     
+function slideRadial1() {
+    document.getElementById("3cap").innerHTML = "Vertex slider value:"
+    document.getElementById("III").innerHTML = slider1.value;
+    
+    function deepClone(obj) {
+    var visitedNodes = [];
+    var clonedCopy = [];
+    function clone(item) {
+        if (typeof item === "object" && !Array.isArray(item)) {
+            if (visitedNodes.indexOf(item) === -1) 
+            {
+                visitedNodes.push(item);
+                var cloneObject = {};
+                clonedCopy.push(cloneObject);
+                for (var i in item) {
+                    if (item.hasOwnProperty(i)) {
+                        cloneObject[i] = clone(item[i]);
+                    }
+                }
+                return cloneObject;
+            } 
+          else 
+                return clonedCopy[visitedNodes.indexOf(item)];
+        }
+        else if (typeof item === "object" && Array.isArray(item)) 
+        {
+            if (visitedNodes.indexOf(item) === -1) {
+                var cloneArray = [];
+                visitedNodes.push(item);
+                clonedCopy.push(cloneArray);
+                for (var j = 0; j < item.length; j++)
+                    cloneArray.push(clone(item[j]));
+                return cloneArray;
+            } 
+           else return clonedCopy[visitedNodes.indexOf(item)];
+        }
+
+        return item; 
+    	}
+    	return clone(obj);
+		}
+
+  
+    par = slider.value;
+    console.log('PAR 1',par)
+    var treeData1 = deepClone(treeData);
+    d3.select('svg').remove();
+    var root1 = treeData1[0];
+  
+    var nodes1 = tree.nodes(root1);
+    nodes1.forEach(function(d) { 
+       for(var i in d.children){
+         if(d.name > slider1.value)
+          d.children = null;
+       }
+
+
+    	});
+ 
+  		updateR(root1, tree2);
+   }
+  
+
+  function collapse(d) {
+    if(d.children) {
+      d._children = d.children
+      d.children = null
+      if(d.parent.children)
+      	d.parent.children = d.parent.children.concat(d._children); 
+    }
+}
+        document.getElementById("myRange").oninput = function() 
+        {	
+      		slideRadial();
+          whichslider = 0  
+				}   
+        document.getElementById("myRange").onclick = function() 
+        {	
+      		slideRadial();
+          whichslider = 0
+				}
+        document.getElementById("myRange1").oninput = function() 
+        {
+          slideRadial1();
+          whichslider = 1
+        }
+        document.getElementById("myRange1").onclick = function() 
+        {
+          slideRadial1();
+          whichslider = 1
+        }
+    //root.children.forEach(collapse); // start with all children collapsed
+    if (whichslider == 0)
+      slideRadial();
+    else
+      slideRadial1();
+    function updateR(source, tree) {
+
+      var nodes = tree.nodes(source),
+          links = tree.links(nodes);
+     
+      nodes.forEach(function(d) { 
+        		d.y = Math.max(d.depth * 10, d.y);  
+      });
+ 			
+     d3.select('svg').remove();
+    var svg = d3.select("body").append("svg")
+            .attr("width", width )
+            .attr("height", height )
+          .append("g")
+          .attr("transform", "translate(" + 1.1*width/2+ "," + 1.1*height/2+ ")");
+
+      var node = svg.selectAll("g.node")
+          .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+      var nodeEnter = node.enter().append("g")
+          .attr("class", "node")
+          .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
+          .on("click", click)
+    .on("mouseover", mo);
+			var colors = d3.scale.linear()
+          .domain([0, 128, 256])
+          .range(["#23fa6e", "#f7354b", "#fbf550"]);
+      nodeEnter.append("circle")
+          .attr("r", 1e-6)
+      		.attr("stroke",function(d) { 
+        				var c = d._children ? "#000000" :colors(d.name); 
+        				if (d.y0 == 0)
+                  return "#000000";
+        				else return c;
+      		})
+          .style("fill", function(d) { 
+        		if (d == treeData[0]) return "#000000";
+        		return d._children ? colors(parseInt(d.name)) : colors(parseInt(d.name));
+      });
+      		
+
+      nodeEnter.append("text")
+          .attr("x", 10)
+          .attr("dy", ".35em")
+          .attr("text-anchor", "start")
+          .text(function(d) { 
+        		if (String(d.name).length >= 0)
+        				return "";// d.name; 
+      			else
+                return "node";})
+          .style("fill-opacity", 1e-4);
+
+      var nodeUpdate = node.transition()
+          .duration(duration)
+          .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
+
+      nodeUpdate.select("circle")
+          .attr("r", function(d, r) {
+        			if (d._children && d.y0 != 0) {
+                return 3;
+              } 
+        			if (d.y0 == 0) return 4;
+        			else return 2;})
+      		.attr("class", function(d) {
+        		if (d._children) {
+                return "blink";
+              } else return "";
+      		})
+          .style("fill", function(d) { 
+        					if (d.y0 == 0) return "#000000";
+        		return d._children ? colors(parseInt(d.name)) : colors(parseInt(d.name)); 									});
+
+      nodeUpdate.select("text")
+          .style("fill-opacity", 1)
+          //.attr("transform", function(d) { return d.x < 180 ? "translate(0)" : "rotate(180)translate(-" + (d.name.length + 50)  + ")"; });
+
+      // TODO: appropriate transform
+      var nodeExit = node.exit().transition()
+          .duration(duration)
+          /*.attr("transform", function(d) { return "diagonal(" + source.y + "," + source.x - 90 + ")"; })*/
+          .remove();
+
+      nodeExit.select("circle")
+          .attr("r", 1e-6);
+
+      nodeExit.select("text")
+          .style("fill-opacity", 1e-6);
+
+      // Update the links…
+      var link = svg.selectAll("path.link")
+          .data(links, function(d) { return d.target.id; });
+
+      // Enter any new links at the parent's previous position.
+      link.enter().insert("path", "g")
+          .attr("class", "link")
+          .attr("d", function(d) {
+            var o = {x: source.x0, y: source.y0};
+            return diagonal({source: o, target: o});
+          });
+
+      link.transition()
+          .duration(duration)
+          .attr("d", diagonal);
+
+      link.exit().transition()
+          .duration(duration)
+          .attr("d", function(d) {
+            var o = {x: source.x, y: source.y};
+            return diagonal({source: o, target: o});
+          })
+          .remove();
+
+      // Stash the old positions for transition.
+      nodes.forEach(function(d) {
+        d.x0 = d.x;
+        d.y0 = d.y;
+      });
+      var maxy = -999;
+      var maxx = -99;
+      var minx = 9999999;
+      var miny = 9999999;
+    }
+    }
+  $("#btn").click(function() {
+    	if (!radial) {
+        showRadial();
+        $("#btn").html('Linear');
+    		radial = true;
+      } else {
+        if(whichslider==0)
+        	slideMain();
+        else
+          slideMain1();
+        document.getElementById("myRange").oninput = function() 
+        {	
+            slideMain();
+				}
+        document.getElementById("myRange").onclick = function() 
+        {	
+            slideMain();
+				}
+        document.getElementById("myRange1").oninput = function() 
+        {	
+            slideMain1();
+				}
+        document.getElementById("myRange1").onclick = function() 
+        {	
+            slideMain1();
+				}
+        $("#btn").html('Radial');
+        radial = false;
+      }
+    }) 
+    
+</script>
+  </body>
+</html>
